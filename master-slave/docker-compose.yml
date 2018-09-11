@@ -1,0 +1,36 @@
+version: '3.1'  
+services:  
+  master:  
+    image: mysql:5.7  
+    environment:  
+      - MYSQL_ROOT_PASSWORD=root 
+    restart: always  
+    ports:  
+      - "50001:3306"
+    volumes:
+      - ./assets/master/my.cnf:/etc/mysql/my.cnf
+      - ./data/master/data:/var/lib/mysql
+  
+  
+  slave:  
+    image: mysql:5.7  
+    environment:  
+      - MYSQL_ROOT_PASSWORD=root 
+    restart: always  
+    ports:  
+      - "50002:3306" 
+    volumes:
+      - ./assets/slave/my.cnf:/etc/mysql/my.cnf
+      - ./data/slave/data:/var/lib/mysql
+
+
+  slave1:  
+    image: mysql:5.7  
+    environment:  
+      - MYSQL_ROOT_PASSWORD=root 
+    restart: always  
+    ports:  
+      - "50003:3306" 
+    volumes:
+      - ./assets/slave1/my.cnf:/etc/mysql/my.cnf
+      - ./data/slave1/data:/var/lib/mysql
